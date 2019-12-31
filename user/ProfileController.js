@@ -158,7 +158,7 @@ query1.limit(5);
 // sort by age
 query1.sort({ "about_details.age": 1 });
 
-			query1.exec(function  (err, Profiles) {
+			query1.populate('user_id').exec(function  (err, Profiles) {
 			if (err) return res.status(500).send("There was a problem finding the profiles.");
 			if (!Profiles) return res.status(404).send("No profiles found.");
 			res.status(200).send(Profiles);
